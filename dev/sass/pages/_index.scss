@@ -1,0 +1,93 @@
+.home.page {
+  .page {
+    padding-top: 60px;
+    @include resp(laptop) {
+      padding-top: 25px;
+    }
+  }
+  .entry-title {
+    display: none;
+  }
+  .entry-content {
+    display: inline-block;
+    width: 100%;
+    @include resp(laptop) {
+
+    }
+  }
+  .center-images{
+    padding: 0 0 74px 22px;
+    img{
+      margin-right: 58px;
+    }
+  }
+  h1,h2 {
+    color: #fff;
+    font-size: 40px;
+    clear: both;
+    width: 100%;
+    text-align: center;
+    @include resp(laptop) {
+    }
+    @include resp(mobile) {
+    }
+
+
+  }
+  p {
+    color: #fff;
+    font-size: 24px;
+    margin-top: 40px;
+    text-align: center;
+    line-height: 28px;
+    margin-bottom: 70px;
+    @include resp(laptop) {
+    }
+
+  }
+  .download {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    p{
+      margin-top: 25px;
+    }
+    @include resp(desktop) {  }
+
+    @include resp(laptop) {
+      a {
+        float: none;
+        display: inline-block;
+        width: 100%;
+        padding-right: 0;
+        padding-left: 60px;
+      }
+    }
+
+    a {
+      width: 288px;
+      height: 71px;
+      background-color: #FFF;
+      float: none;
+      display: inline-block;
+      position: relative;
+      color: #646c70;
+      font-size: 17px;
+      font-weight: 400;
+      text-decoration: none;
+      margin-top: 18px;
+      border-radius: 8px;
+      &:hover {
+        @include box-shadow(2.5px 4.3px 5px rgba(28, 48, 136, 0.75));
+      }
+    }
+    .playstore {
+      @include main-sprite(playstore);
+      margin-right: 35px;
+    }
+    .appstore {
+      @include main-sprite(appstore);
+      margin-left: 35px;
+    }
+  }
+}

@@ -1,0 +1,107 @@
+.nav-main{
+  position: relative;
+  &_toggler {
+    display: none;
+  }
+  &_input {
+    display: none;
+
+  }
+  @include resp(laptop) {
+    display: none;
+    background-color: #b4b4b4;
+    li {
+      margin: 0 !important;
+      width: 100%;
+      text-align: center;
+      a {
+        line-height: 45px;
+        font-size: 18px;
+        padding: 0;
+        display: inline-block;
+        width: 100%;
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+    ul {
+      padding-top: 50px;
+    }
+    &_toggler {
+      display: block;
+      width: 35px;
+      height: 26px;
+      position: relative;
+      float: right;
+      border-top: 4px solid;
+      border-bottom: 4px solid;
+      cursor: pointer;
+      color: #3A393A;
+      right: 18px;
+      top: 12px;
+      z-index: 9999;
+      &:after {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -2px;
+        height: 4px;
+        width: 100%;
+        background-color: #3A393A;
+        content: '';
+      }
+    }
+    &_input {
+      display: none;
+      &:checked {
+        + .nav-main {
+          display: block;
+        }
+      }
+    }
+  }
+  li{
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    a{
+      font-size: 26px;
+      font-weight: 700;
+      text-decoration: none;
+      background-color: #FFF;
+      border-radius:10px;
+      color: #005E7B;
+      width: 100%;
+      text-align: center;
+      display: block;
+      &:hover{
+        @include box-shadow(4px 6.9px 5.7px 0.3px rgba(0, 94, 123, 0.75));
+      }
+    }
+
+    &.current-menu-item{
+      a{
+        background-color: #FFF;
+        border-radius:10px;
+        color: #3A393A;
+      }
+    }
+    &:first-child{
+      width: 196px;
+      margin-right: 50px;
+      margin-left: 20px;
+    }
+    &:nth-child(2){
+      width: 135px;
+      margin-right: 317px;
+    }
+    &:nth-child(3){
+      width: 148px;
+      margin-right: 70px;
+    }
+    &:last-child{
+      width: 190px;
+    }
+  }
+}

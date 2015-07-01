@@ -1,0 +1,16 @@
+$max-width-base:1160px;
+
+$screen-xs:                  660px !default;
+$screen-xs-min:              $screen-xs !default;
+
+$screen-sm:                  768px !default;
+$screen-sm-min:              $screen-sm !default;
+
+$screen-md: 1023px !default;
+$screen-md-min:              $screen-md !default;
+
+$screen-lg:                  $max-width-base !default;
+$screen-lg-min:              $screen-lg !default;
+
+$grid-columns:              12 !default;
+$grid-gutter-width:         30px !default;

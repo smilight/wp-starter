@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+// Compass components
+@import "compass";
+@import "compass/reset";
+@import "core/settings";
+
+// Sprites
+@import "sprites/main/*.png";
+//@include all-main-sprites;
+//$sprite: sprite-map("/sprites/main/*.png", $main-spacing: 50px);
+
+// Helpers
+@import "helpers/clearfix";
+@import "helpers/grid";
+
+// Modules
+@import 'modules/icons';
+@import 'modules/nav-main';
+@import 'modules/nav-footer';
+
+// Layouts
+@import 'layout/extends';
+@import 'layout/base';
+@import 'layout/header';
+@import 'layout/footer';
+
+// Pages
+@import "pages/index";
+
+// Components
+@import "components/ideal-slider";

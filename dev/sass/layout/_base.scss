@@ -1,0 +1,18 @@
+*{
+  @include box-sizing(border-box);
+}
+
+body,html{
+  color: #FFF;
+  font-family: "Arial",sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  background-position: center top;
+  background-size: cover;
+}
+.inner_content{
+  @extend %center_grid;
+}
+:focus {
+  outline: 0;
+}

@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+@function unicode($str){
+  @return unquote("\"") + $str + unquote("\"");
+}
+
+@font-face {
+  font-family: "<%= fontName %>";
+  src: url('<%= fontPath %><%= fontName %>.eot');
+  src: url('<%= fontPath %><%= fontName %>.eot?#iefix') format('eot'),
+  url('<%= fontPath %><%= fontName %>.woff') format('woff'),
+  url('<%= fontPath %><%= fontName %>.ttf') format('truetype'),
+  url('<%= fontPath %><%= fontName %>.svg#<%= fontName %>') format('svg');
+}
+
+%icon {
+  font-family: '<%= fontName %>';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-indent: 0;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@function icon-char($filename) {
+  $char: '';
+<% _.each(glyphs, function(glyph) { %>
+@if $filename == <%= glyph.fileName %> {
+$char: \<%= glyph.codePoint %>;
+}<% }); %>
+
+@return unicode($char);
+}
+
+@mixin icon($filename, $insert: before) {
+  &:#{$insert} {
+    @extend %icon;
+    content: icon-char($filename);
+  }
+}
+
+<% _.each(glyphs, function(glyph) { %>.icon-<%= glyph.fileName %> {
+  @include icon(<%= glyph.fileName %>);
+}
+<% }); %>

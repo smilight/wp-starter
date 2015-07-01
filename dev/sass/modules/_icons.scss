@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+@function unicode($str){
+  @return unquote("\"") + $str + unquote("\"");
+}
+
+@font-face {
+  font-family: "magnets-icons";
+  src: url('../fonts/magnets-icons.eot');
+  src: url('../fonts/magnets-icons.eot?#iefix') format('eot'),
+  url('../fonts/magnets-icons.woff') format('woff'),
+  url('../fonts/magnets-icons.ttf') format('truetype'),
+  url('../fonts/magnets-icons.svg#magnets-icons') format('svg');
+}
+
+%icon {
+  font-family: 'magnets-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-indent: 0;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@function icon-char($filename) {
+  $char: '';
+
+@if $filename == arr-l {
+$char: \E001;
+}
+@if $filename == arr-r {
+$char: \E002;
+}
+@if $filename == face {
+$char: \E003;
+}
+@if $filename == google {
+$char: \E004;
+}
+@if $filename == instagram {
+$char: \E005;
+}
+@if $filename == logo {
+$char: \E006;
+}
+@if $filename == tw {
+$char: \E007;
+}
+
+@return unicode($char);
+}
+
+@mixin icon($filename, $insert: before) {
+  &:#{$insert} {
+    @extend %icon;
+    content: icon-char($filename);
+  }
+}
+
+.icon-arr-l {
+  @include icon(arr-l);
+}
+.icon-arr-r {
+  @include icon(arr-r);
+}
+.icon-face {
+  @include icon(face);
+}
+.icon-google {
+  @include icon(google);
+}
+.icon-instagram {
+  @include icon(instagram);
+}
+.icon-logo {
+  @include icon(logo);
+}
+.icon-tw {
+  @include icon(tw);
+}

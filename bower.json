@@ -1,0 +1,19 @@
+{
+  "name": "magnets",
+  "version": "0.0.0",
+  "authors": [
+    "smilight <shensi@ukr.net>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "dev/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ideal-image-slider": "~1.4.0"
+  }
+}

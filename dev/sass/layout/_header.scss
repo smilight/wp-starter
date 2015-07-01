@@ -1,0 +1,30 @@
+.header-main {
+  height: 140px;
+  line-height: 140px;
+  background-color: transparent;
+  margin-top: 50px;
+  &_inner {
+    @extend %center_grid;
+    padding: 0;
+    position: relative;
+  }
+  .logo{
+    width: main-sprite-width(logo);
+    height: main-sprite-height(logo);
+    position: absolute;
+    left: 50%;
+    margin-left: - main-sprite-width(logo) / 2;
+    top: 46%;
+    margin-top: - main-sprite-height(logo) / 2;
+    @include main-sprite(logo);
+    text-decoration: none;
+    z-index: 9;
+  }
+  @include resp(laptop) {
+    height: 50px;
+    line-height: 1;
+    &_inner {
+      padding: 0;
+    }
+  }
+}

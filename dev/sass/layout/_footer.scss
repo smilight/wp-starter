@@ -1,0 +1,15 @@
+//@import "compass/layout/sticky-footer";
+//@include sticky-footer(214px, "main", "#a", ".footer-main");
+
+.footer-main {
+  height: 72px;
+  background-color: transparent;
+  overflow: hidden;
+  width: 100%;
+  margin: 70px 0 80px 0;
+  &_inner{
+    @extend %center_grid;
+    padding: 0;
+    margin: 0 auto;
+  }
+}
