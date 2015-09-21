@@ -9,14 +9,14 @@
     position: relative;
   }
   .logo{
-    width: main-sprite-width(logo);
-    height: main-sprite-height(logo);
+    //width: main-sprite-width(logo);
+    //height: main-sprite-height(logo);
     position: absolute;
     left: 50%;
-    margin-left: - main-sprite-width(logo) / 2;
+    //margin-left: - main-sprite-width(logo) / 2;
     top: 46%;
-    margin-top: - main-sprite-height(logo) / 2;
-    @include main-sprite(logo);
+    //margin-top: - main-sprite-height(logo) / 2;
+    //@include main-sprite(logo);
     text-decoration: none;
     z-index: 9;
   }

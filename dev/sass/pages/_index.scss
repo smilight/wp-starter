@@ -81,13 +81,5 @@
         @include box-shadow(2.5px 4.3px 5px rgba(28, 48, 136, 0.75));
       }
     }
-    .playstore {
-      @include main-sprite(playstore);
-      margin-right: 35px;
-    }
-    .appstore {
-      @include main-sprite(appstore);
-      margin-left: 35px;
-    }
   }
 }

@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     fs = require('fs'),
     $ = require('gulp-load-plugins')(),
     pjson = require('./package.json'),
-    critical = require('critical'),
+    //critical = require('critical'),
     cssLint = {
         "adjoining-classes": true,
         "box-model": false,
@@ -145,8 +145,8 @@ gulp.task('styles:compile', function () {
                         comments: config.env != 'production'
                     }))
                     .on('error', console.error.bind(console))
-                    .pipe($.csslint(cssLint))
-                    .pipe($.csslint.reporter())
+                    //.pipe($.csslint(cssLint))
+                    //.pipe($.csslint.reporter())
                     .pipe($.if(config.env == 'production', $.autoprefixer({browsers: AUTOPREFIXER_BROWSERS})))
                     .pipe($.if(config.env == 'production', $.csso()))
                     .pipe(gulp.dest(path.dirname(file.path).replace(config.dev_folder, config.dist_folder).replace('sass', 'css')))
@@ -177,8 +177,8 @@ gulp.task('styles:watch', function () {
                         comments: true
                     }))
                     .on('error', console.error.bind(console))
-                    .pipe($.csslint(cssLint))
-                    .pipe($.csslint.reporter())
+                    //.pipe($.csslint(cssLint))
+                    //.pipe($.csslint.reporter())
                     .pipe(gulp.dest(path.dirname(file.path).replace(config.dev_folder, config.dist_folder).replace('sass', 'css')))
                     .pipe($.size({title: 'styles'}));
             }
