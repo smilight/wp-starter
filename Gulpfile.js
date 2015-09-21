@@ -4,7 +4,8 @@ var gulp = require('gulp'),
     fs = require('fs'),
     $ = require('gulp-load-plugins')(),
     pjson = require('./package.json'),
-    //critical = require('critical'),
+    request = require('request'),
+    critical = require('critical'),
     cssLint = {
         "adjoining-classes": true,
         "box-model": false,
@@ -67,6 +68,19 @@ function createPath(userPath) {
     )
 }
 
+function ensureExists(path, mask, cb) {
+    if (typeof mask == 'function') { // allow the `mask` parameter to be optional
+        cb = mask;
+        mask = 0777;
+    }
+    fs.mkdir(path, mask, function(err) {
+        if (err) {
+            if (err.code == 'EEXIST') cb(null); // ignore the error if the folder already exists
+            else cb(err); // something else went wrong
+        } else cb(null); // successfully created folder
+    });
+}
+
 gulp.task('js', function () {
     return gulp.src(['dev/components/**/*.min.js', 'dev/js/*.js'])
         .pipe($.concat('all.js'))
@@ -103,6 +117,48 @@ gulp.task('iconfont', function () {
             centerHorizontally: true
         }))
         .pipe(gulp.dest(createPath('assets/fonts/')));
+});
+
+gulp.task('critical',['styles:compile'], function () {
+    ensureExists(__dirname + '/.tmp', 0777, function(err) {
+        if (err) console.log( err);
+        else console.log('folder ok!');
+    });
+    function writeToHeader(styles){
+        var fs = require('fs'),
+            fileList = './header.php';
+
+        fs.readFile(fileList, function(err, data) {
+            if(err) throw err;
+            data = data.toString();
+            data = data.replace(/<style id="criticalcss">(.*?)<\/style>/g, '<style id="criticalcss">'+styles+'</style>');
+            fs.writeFile(fileList, data, function(err) {
+                err || console.log('critical css added');
+            });
+            return true;
+        });
+    }
+
+    request(pjson.homepage, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            critical.generate({
+                base: '.tmp/',
+                html: body,
+                css: ['./assets/css/main.css'],
+                dimensions: [{
+                    height: 200,
+                    width: 500
+                }, {
+                    height: 900,
+                    width: 1200
+                }],
+                minify: true,
+                ignore: ['@font-face',/url\(/]
+            }).then(function (output) {
+                writeToHeader(output);
+            });
+        }
+    });
 });
 
 gulp.task('images:optimize', function () {
